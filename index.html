@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>My Developer Portfolio</title>
 
     <style>
@@ -25,29 +24,27 @@
             top: 0;
             z-index: 1000;
             background: #111;
-            padding: 15px 20px;
+            padding: 15px;
             text-align: center;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 12px;
+            margin: 0 10px;
             font-weight: bold;
         }
 
         .nav-btn {
+            padding: 9px 14px;
             border: none;
-            background: white;
-            color: #111;
-            padding: 9px 15px;
             border-radius: 8px;
             cursor: pointer;
-            margin-left: 10px;
+            margin-left: 8px;
         }
 
         section {
-            padding: 80px 20px;
+            padding: 75px 20px;
         }
 
         .hero {
@@ -61,12 +58,11 @@
 
         .avatar {
             font-size: 70px;
-            margin-bottom: 10px;
         }
 
         h1 {
-            font-size: 52px;
-            margin: 10px;
+            font-size: 50px;
+            margin: 15px 0;
         }
 
         .gradient-text {
@@ -87,19 +83,15 @@
             font-size: 18px;
         }
 
-        .hero-buttons {
-            margin-top: 20px;
-        }
-
         .btn,
         .small-btn {
             display: inline-block;
-            padding: 12px 22px;
+            padding: 12px 20px;
             margin: 7px;
             border-radius: 9px;
-            text-decoration: none;
             background: #111;
             color: white;
+            text-decoration: none;
             border: none;
             cursor: pointer;
         }
@@ -117,7 +109,7 @@
         }
 
         .section-title {
-            font-size: 36px;
+            font-size: 35px;
             margin-bottom: 35px;
         }
 
@@ -125,15 +117,14 @@
         .contact-box {
             max-width: 750px;
             margin: auto;
-            background: white;
             padding: 30px;
+            background: white;
             border-radius: 18px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.1);
         }
 
         .about-box p {
             line-height: 1.8;
-            font-size: 17px;
         }
 
         .skills {
@@ -183,10 +174,6 @@
             transition: 0.3s;
         }
 
-        .project h3 {
-            font-size: 24px;
-        }
-
         .project p {
             line-height: 1.6;
         }
@@ -204,7 +191,6 @@
             border: 1px solid #ccc;
             border-radius: 9px;
             font-size: 16px;
-            font-family: Arial, sans-serif;
         }
 
         textarea {
@@ -222,21 +208,21 @@
             cursor: pointer;
         }
 
+        .social a {
+            display: inline-block;
+            margin: 8px;
+            padding: 12px 18px;
+            border-radius: 9px;
+            background: #111;
+            color: white;
+            text-decoration: none;
+        }
+
         footer {
             background: #111;
             color: white;
             text-align: center;
             padding: 25px;
-        }
-
-        .social a {
-            display: inline-block;
-            margin: 8px;
-            padding: 10px 15px;
-            border-radius: 8px;
-            background: #111;
-            color: white;
-            text-decoration: none;
         }
 
         /* DARK MODE */
@@ -273,9 +259,10 @@
         /* MOBILE */
 
         @media (max-width: 700px) {
+
             nav a {
-                margin: 5px;
-                font-size: 14px;
+                margin: 4px;
+                font-size: 13px;
             }
 
             h1 {
@@ -290,10 +277,6 @@
             section {
                 padding: 60px 15px;
             }
-
-            .section-title {
-                font-size: 30px;
-            }
         }
     </style>
 </head>
@@ -303,7 +286,6 @@
 <!-- NAVBAR -->
 
 <nav>
-
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
@@ -313,7 +295,6 @@
     <button class="nav-btn" onclick="toggleDarkMode()">
         🌙 Theme
     </button>
-
 </nav>
 
 
@@ -321,9 +302,7 @@
 
 <section id="home" class="hero">
 
-    <div class="avatar">
-        💻
-    </div>
+    <div class="avatar">💻</div>
 
     <h1>
         Hi, I'm a
@@ -339,8 +318,7 @@
         and JavaScript.
     </p>
 
-    <div class="hero-buttons">
-
+    <div>
         <a href="#projects" class="btn">
             🚀 View Projects
         </a>
@@ -348,7 +326,6 @@
         <a href="#contact" class="btn btn-outline">
             📩 Contact Me
         </a>
-
     </div>
 
 </section>
@@ -360,19 +337,22 @@
 
     <div class="container">
 
-        <h2 class="section-title">👨‍💻 About Me</h2>
+        <h2 class="section-title">
+            👨‍💻 About Me
+        </h2>
 
         <div class="about-box">
 
             <p>
-                Hello! I am learning web development and
-                building projects with HTML, CSS and
-                JavaScript.
+                Hello! I am learning web development
+                and building projects using HTML,
+                CSS and JavaScript.
             </p>
 
             <p>
-                My goal is to improve my programming skills
-                and create useful websites and applications.
+                My goal is to improve my programming
+                skills and create useful websites
+                and applications.
             </p>
 
         </div>
@@ -388,7 +368,9 @@
 
     <div class="container">
 
-        <h2 class="section-title">⚡ My Skills</h2>
+        <h2 class="section-title">
+            ⚡ My Skills
+        </h2>
 
         <div class="skills">
 
@@ -432,11 +414,11 @@
 
     <div class="container">
 
-        <h2 class="section-title">🚀 My Projects</h2>
+        <h2 class="section-title">
+            🚀 My Projects
+        </h2>
 
         <div class="projects">
-
-            <!-- TODO -->
 
             <div class="project">
 
@@ -444,7 +426,7 @@
 
                 <p>
                     A task management application
-                    built using HTML, CSS and JavaScript.
+                    built with HTML, CSS and JavaScript.
                 </p>
 
                 <a href="todo.html" class="small-btn">
@@ -453,8 +435,6 @@
 
             </div>
 
-
-            <!-- CALCULATOR -->
 
             <div class="project">
 
@@ -471,8 +451,6 @@
 
             </div>
 
-
-            <!-- PORTFOLIO -->
 
             <div class="project">
 
@@ -546,7 +524,7 @@
 </section>
 
 
-<!-- SOCIAL -->
+<!-- SOCIAL / GITHUB -->
 
 <section>
 
@@ -558,8 +536,12 @@
 
         <div class="social">
 
-            <a href="https://github.com/" target="_blank">
-                GitHub
+            <a
+                href="https://github.com/vikas07ss"
+                target="_blank"
+                rel="noopener"
+            >
+                🐙 GitHub
             </a>
 
         </div>
@@ -584,20 +566,16 @@
 </footer>
 
 
-<!-- JAVASCRIPT -->
-
 <script>
 
     /* DARK MODE */
 
     function toggleDarkMode() {
-
         document.body.classList.toggle("dark");
-
     }
 
 
-    /* TYPING ANIMATION */
+    /* TYPING EFFECT */
 
     const texts = [
         "Web Developer 💻",
@@ -622,19 +600,22 @@
         } else {
 
             setTimeout(deleteText, 1200);
-
         }
-
     }
+
 
     function deleteText() {
 
-        let element = document.getElementById("typing");
+        const element =
+            document.getElementById("typing");
 
         if (charIndex > 0) {
 
             element.innerText =
-                texts[textIndex].substring(0, charIndex - 1);
+                texts[textIndex].substring(
+                    0,
+                    charIndex - 1
+                );
 
             charIndex--;
 
@@ -649,10 +630,9 @@
             }
 
             setTimeout(typeText, 300);
-
         }
-
     }
+
 
     typeText();
 
