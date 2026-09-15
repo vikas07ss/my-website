@@ -6,23 +6,19 @@
     <style>
         * {
             box-sizing: border-box;
-            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            color: #222;
+            background: #f2f4f8;
+            color: #111;
         }
 
         nav {
-            position: sticky;
-            top: 0;
             background: #111;
             padding: 18px;
             text-align: center;
-            z-index: 100;
         }
 
         nav a {
@@ -32,111 +28,58 @@
         }
 
         nav button {
-            padding: 8px 12px;
+            margin-left: 10px;
+            padding: 8px 14px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
         }
 
         section {
-            padding: 80px 20px;
+            padding: 70px 20px;
             text-align: center;
         }
 
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        h1 {
+            font-size: 48px;
         }
 
-        .hero h1 {
-            font-size: 55px;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 13px 25px;
-            background: #111;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-        }
-
-        .cards {
+        .projects {
             display: flex;
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            margin-top: 30px;
         }
 
-        .card {
+        .project-card {
+            background: white;
             width: 250px;
-            padding: 25px;
-            background: white;
+            padding: 30px 20px;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
-
-            /* Animation */
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            transition: 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        .project-card:hover {
+            transform: translateY(-8px);
         }
 
-        .contact-box {
-            max-width: 450px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        .project-card h3 {
+            font-size: 21px;
         }
 
-        .contact-box input,
-        .contact-box textarea {
-            width: 100%;
-            padding: 13px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
+        .project-card p {
+            min-height: 45px;
         }
 
-        .contact-box textarea {
-            height: 120px;
-            resize: none;
-        }
-
-        .contact-box button {
-            width: 100%;
-            padding: 13px;
+        .project-card a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 18px;
             background: #111;
             color: white;
-            border: none;
+            text-decoration: none;
             border-radius: 8px;
-            cursor: pointer;
-        }
-
-        #contactMessage {
-            font-weight: bold;
-        }
-
-        footer {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 25px;
         }
 
         .dark {
@@ -144,27 +87,13 @@
             color: white;
         }
 
-        .dark .card,
-        .dark .contact-box {
+        .dark .project-card {
             background: #1e1e1e;
         }
 
-        .dark input,
-        .dark textarea {
-            background: #333;
-            color: white;
-            border-color: #555;
-        }
-
-        @media (max-width: 600px) {
-
-            .hero h1 {
-                font-size: 38px;
-            }
-
-            nav a {
-                margin: 0 5px;
-                font-size: 13px;
+        @media(max-width:600px) {
+            h1 {
+                font-size: 36px;
             }
         }
     </style>
@@ -173,64 +102,49 @@
 <body>
 
 <nav>
-
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
 
-    <button onclick="darkMode()">🌙</button>
-
+    <button onclick="toggleDarkMode()">🌙</button>
 </nav>
 
 
-<section id="home" class="hero">
-
-    <h1>Hello, I'm a Developer 👋</h1>
-
-    <p>Future Software Developer 💻</p>
-
-    <a href="#projects" class="btn">View My Projects</a>
-
+<section id="home">
+    <h1>Hi, I'm a Future Developer 👋</h1>
+    <p>Welcome to my portfolio website.</p>
 </section>
 
 
 <section id="about">
-
-    <h2>👤 About Me</h2>
-
-    <p>
-        I am learning web development and building projects
-        using HTML, CSS and JavaScript.
-    </p>
-
+    <h2>About Me</h2>
+    <p>I am learning web development and building projects.</p>
 </section>
 
 
 <section id="skills">
+    <h2>💻 Skills</h2>
 
-    <h2>🛠️ My Skills</h2>
+    <div class="projects">
 
-    <div class="cards">
-
-        <div class="card">
+        <div class="project-card">
             <h3>HTML</h3>
             <p>Webpage structure</p>
         </div>
 
-        <div class="card">
+        <div class="project-card">
             <h3>CSS</h3>
             <p>Design and styling</p>
         </div>
 
-        <div class="card">
+        <div class="project-card">
             <h3>JavaScript</h3>
             <p>Website functionality</p>
         </div>
 
     </div>
-
 </section>
 
 
@@ -238,21 +152,35 @@
 
     <h2>💻 My Projects</h2>
 
-    <div class="cards">
+    <div class="projects">
 
-        <div class="card">
+        <div class="project-card">
             <h3>To-Do List</h3>
             <p>A task management app.</p>
+
+            <a href="#" onclick="alert('To-Do List project opened!')">
+                View Project
+            </a>
         </div>
 
-        <div class="card">
+
+        <div class="project-card">
             <h3>Calculator</h3>
             <p>A working JavaScript calculator.</p>
+
+            <a href="#" onclick="alert('Calculator project opened!')">
+                View Project
+            </a>
         </div>
 
-        <div class="card">
+
+        <div class="project-card">
             <h3>Portfolio</h3>
             <p>My personal developer website.</p>
+
+            <a href="#home">
+                View Project
+            </a>
         </div>
 
     </div>
@@ -261,61 +189,15 @@
 
 
 <section id="contact">
-
-    <h2>📩 Contact Me</h2>
-
-    <div class="contact-box">
-
-        <input type="text" id="contactName" placeholder="Your Name">
-
-        <input type="email" id="contactEmail" placeholder="Your Email">
-
-        <textarea id="contactText" placeholder="Your Message"></textarea>
-
-        <button onclick="sendMessage()">Send Message</button>
-
-        <p id="contactMessage"></p>
-
-    </div>
-
+    <h2>📩 Contact</h2>
+    <p>You can contact me here.</p>
 </section>
-
-
-<footer>
-
-    <p>© 2026 My Portfolio</p>
-
-</footer>
 
 
 <script>
 
-function darkMode() {
-
+function toggleDarkMode() {
     document.body.classList.toggle("dark");
-
-}
-
-
-function sendMessage() {
-
-    let name = document.getElementById("contactName").value;
-    let email = document.getElementById("contactEmail").value;
-    let message = document.getElementById("contactText").value;
-
-    let result = document.getElementById("contactMessage");
-
-    if (name === "" || email === "" || message === "") {
-
-        result.innerText = "Please fill all fields.";
-        result.style.color = "red";
-
-        return;
-    }
-
-    result.innerText = "Message submitted successfully! 🎉";
-    result.style.color = "green";
-
 }
 
 </script>
