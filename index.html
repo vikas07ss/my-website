@@ -28,7 +28,7 @@
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 15px;
+            margin: 0 12px;
         }
 
         nav button {
@@ -84,10 +84,52 @@
             background: white;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+
+            /* Animation */
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .card h3 {
-            margin-top: 0;
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+
+        .contact-box {
+            max-width: 450px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+
+        .contact-box input,
+        .contact-box textarea {
+            width: 100%;
+            padding: 13px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .contact-box textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        .contact-box button {
+            width: 100%;
+            padding: 13px;
+            background: #111;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #contactMessage {
+            font-weight: bold;
         }
 
         footer {
@@ -102,8 +144,16 @@
             color: white;
         }
 
-        .dark .card {
+        .dark .card,
+        .dark .contact-box {
             background: #1e1e1e;
+        }
+
+        .dark input,
+        .dark textarea {
+            background: #333;
+            color: white;
+            border-color: #555;
         }
 
         @media (max-width: 600px) {
@@ -114,7 +164,7 @@
 
             nav a {
                 margin: 0 5px;
-                font-size: 14px;
+                font-size: 13px;
             }
         }
     </style>
@@ -128,6 +178,7 @@
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
 
     <button onclick="darkMode()">🌙</button>
 
@@ -209,6 +260,27 @@
 </section>
 
 
+<section id="contact">
+
+    <h2>📩 Contact Me</h2>
+
+    <div class="contact-box">
+
+        <input type="text" id="contactName" placeholder="Your Name">
+
+        <input type="email" id="contactEmail" placeholder="Your Email">
+
+        <textarea id="contactText" placeholder="Your Message"></textarea>
+
+        <button onclick="sendMessage()">Send Message</button>
+
+        <p id="contactMessage"></p>
+
+    </div>
+
+</section>
+
+
 <footer>
 
     <p>© 2026 My Portfolio</p>
@@ -221,6 +293,28 @@
 function darkMode() {
 
     document.body.classList.toggle("dark");
+
+}
+
+
+function sendMessage() {
+
+    let name = document.getElementById("contactName").value;
+    let email = document.getElementById("contactEmail").value;
+    let message = document.getElementById("contactText").value;
+
+    let result = document.getElementById("contactMessage");
+
+    if (name === "" || email === "" || message === "") {
+
+        result.innerText = "Please fill all fields.";
+        result.style.color = "red";
+
+        return;
+    }
+
+    result.innerText = "Message submitted successfully! 🎉";
+    result.style.color = "green";
 
 }
 
