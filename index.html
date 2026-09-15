@@ -1,199 +1,226 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Advanced Calculator</title>
+    <title>My Portfolio</title>
 
     <style>
         * {
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f2f4f8;
+            background: #f4f6f8;
+            color: #222;
         }
 
-        .calculator {
-            width: 330px;
-            margin: 50px auto;
-            background: #222;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        nav {
+            position: sticky;
+            top: 0;
+            background: #111;
+            padding: 18px;
+            text-align: center;
+            z-index: 100;
         }
 
-        #display {
-            width: 100%;
-            height: 70px;
-            margin-bottom: 15px;
-            padding: 10px;
-            font-size: 30px;
-            text-align: right;
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        nav button {
+            padding: 8px 12px;
             border: none;
-            border-radius: 10px;
-        }
-
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        button {
-            height: 60px;
-            font-size: 20px;
-            border: none;
-            border-radius: 10px;
+            border-radius: 6px;
             cursor: pointer;
         }
 
-        .operator {
-            font-weight: bold;
+        section {
+            padding: 80px 20px;
+            text-align: center;
         }
 
-        .equal {
-            grid-column: span 2;
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        .history {
-            width: 330px;
-            margin: 20px auto;
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 13px 25px;
+            background: #111;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .card {
+            width: 250px;
+            padding: 25px;
             background: white;
-            padding: 20px;
             border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
         }
 
-        .history h2 {
+        .card h3 {
             margin-top: 0;
         }
 
-        #historyList {
-            padding-left: 20px;
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 25px;
         }
 
-        .clear-history {
-            width: 100%;
-            height: 45px;
-            margin-top: 10px;
+        .dark {
+            background: #121212;
+            color: white;
+        }
+
+        .dark .card {
+            background: #1e1e1e;
+        }
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            nav a {
+                margin: 0 5px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<div class="calculator">
+<nav>
 
-    <input type="text" id="display" readonly>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
 
-    <div class="buttons">
+    <button onclick="darkMode()">🌙</button>
 
-        <button onclick="clearDisplay()">C</button>
-        <button onclick="deleteLast()">⌫</button>
-        <button onclick="addValue('%')">%</button>
-        <button class="operator" onclick="addValue('/')">÷</button>
+</nav>
 
-        <button onclick="addValue('7')">7</button>
-        <button onclick="addValue('8')">8</button>
-        <button onclick="addValue('9')">9</button>
-        <button class="operator" onclick="addValue('*')">×</button>
 
-        <button onclick="addValue('4')">4</button>
-        <button onclick="addValue('5')">5</button>
-        <button onclick="addValue('6')">6</button>
-        <button class="operator" onclick="addValue('-')">−</button>
+<section id="home" class="hero">
 
-        <button onclick="addValue('1')">1</button>
-        <button onclick="addValue('2')">2</button>
-        <button onclick="addValue('3')">3</button>
-        <button class="operator" onclick="addValue('+')">+</button>
+    <h1>Hello, I'm a Developer 👋</h1>
 
-        <button onclick="addValue('0')">0</button>
-        <button onclick="addValue('.')">.</button>
-        <button class="equal" onclick="calculate()">=</button>
+    <p>Future Software Developer 💻</p>
+
+    <a href="#projects" class="btn">View My Projects</a>
+
+</section>
+
+
+<section id="about">
+
+    <h2>👤 About Me</h2>
+
+    <p>
+        I am learning web development and building projects
+        using HTML, CSS and JavaScript.
+    </p>
+
+</section>
+
+
+<section id="skills">
+
+    <h2>🛠️ My Skills</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>HTML</h3>
+            <p>Webpage structure</p>
+        </div>
+
+        <div class="card">
+            <h3>CSS</h3>
+            <p>Design and styling</p>
+        </div>
+
+        <div class="card">
+            <h3>JavaScript</h3>
+            <p>Website functionality</p>
+        </div>
 
     </div>
 
-</div>
+</section>
 
-<div class="history">
 
-    <h2>📜 History</h2>
+<section id="projects">
 
-    <ol id="historyList"></ol>
+    <h2>💻 My Projects</h2>
 
-    <button class="clear-history" onclick="clearHistory()">
-        Clear History
-    </button>
+    <div class="cards">
 
-</div>
+        <div class="card">
+            <h3>To-Do List</h3>
+            <p>A task management app.</p>
+        </div>
+
+        <div class="card">
+            <h3>Calculator</h3>
+            <p>A working JavaScript calculator.</p>
+        </div>
+
+        <div class="card">
+            <h3>Portfolio</h3>
+            <p>My personal developer website.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>© 2026 My Portfolio</p>
+
+</footer>
+
 
 <script>
 
-let display = document.getElementById("display");
-let historyList = document.getElementById("historyList");
+function darkMode() {
 
-let history = [];
-
-function addValue(value) {
-    display.value += value;
-}
-
-function clearDisplay() {
-    display.value = "";
-}
-
-function deleteLast() {
-    display.value = display.value.slice(0, -1);
-}
-
-function calculate() {
-
-    try {
-
-        let expression = display.value;
-
-        if (expression === "") {
-            return;
-        }
-
-        let result = Function(
-            '"use strict"; return (' + expression + ')'
-        )();
-
-        display.value = result;
-
-        history.push(expression + " = " + result);
-
-        showHistory();
-
-    } catch {
-
-        display.value = "Error";
-
-    }
-}
-
-function showHistory() {
-
-    historyList.innerHTML = "";
-
-    history.forEach(function(item) {
-
-        let li = document.createElement("li");
-
-        li.innerText = item;
-
-        historyList.appendChild(li);
-
-    });
-}
-
-function clearHistory() {
-
-    history = [];
-
-    showHistory();
+    document.body.classList.toggle("dark");
 
 }
 
