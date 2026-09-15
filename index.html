@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +8,6 @@
 <title>Vikas Kumar | BCA Developer</title>
 
 <style>
-/* =========================
-   RESET
-========================= */
-
 *{
     margin:0;
     padding:0;
@@ -30,10 +27,7 @@ body{
     transition:.4s;
 }
 
-/* =========================
-   LOADER
-========================= */
-
+/* LOADER */
 #loader{
     position:fixed;
     inset:0;
@@ -66,10 +60,7 @@ body{
     to{transform:scale(1.12);}
 }
 
-/* =========================
-   SCROLL PROGRESS
-========================= */
-
+/* SCROLL PROGRESS */
 #progress{
     position:fixed;
     top:0;
@@ -80,10 +71,7 @@ body{
     z-index:10000;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
-
+/* BACKGROUND */
 body::before{
     content:"";
     position:fixed;
@@ -120,10 +108,7 @@ body::after{
     z-index:-3;
 }
 
-/* =========================
-   NAVBAR
-========================= */
-
+/* NAVBAR */
 nav{
     position:fixed;
     top:15px;
@@ -188,10 +173,7 @@ nav a:hover{
     display:none;
 }
 
-/* =========================
-   HERO
-========================= */
-
+/* HERO */
 .hero{
     min-height:100vh;
     padding:140px 20px 80px;
@@ -233,12 +215,7 @@ nav a:hover{
 }
 
 .gradient{
-    background:linear-gradient(
-        90deg,
-        #00e5ff,
-        #7c3aed,
-        #ff4ecd
-    );
+    background:linear-gradient(90deg,#00e5ff,#7c3aed,#ff4ecd);
     -webkit-background-clip:text;
     color:transparent;
 }
@@ -297,10 +274,7 @@ nav a:hover{
     50%{transform:translateY(8px);}
 }
 
-/* =========================
-   GENERAL
-========================= */
-
+/* GENERAL */
 section{
     padding:100px 20px;
 }
@@ -335,21 +309,19 @@ section{
     transform:translateY(0);
 }
 
-/* =========================
-   ABOUT
-========================= */
-
-.about-grid{
-    display:grid;
-    grid-template-columns:1.4fr .8fr;
-    gap:25px;
-}
-
+/* GLASS */
 .glass{
     background:rgba(255,255,255,.045);
     border:1px solid rgba(255,255,255,.1);
     border-radius:22px;
     backdrop-filter:blur(15px);
+}
+
+/* ABOUT */
+.about-grid{
+    display:grid;
+    grid-template-columns:1.4fr .8fr;
+    gap:25px;
 }
 
 .about-text{
@@ -385,10 +357,7 @@ section{
     color:#ddd;
 }
 
-/* =========================
-   STATS
-========================= */
-
+/* STATS */
 .stats{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -412,10 +381,7 @@ section{
     margin-top:7px;
 }
 
-/* =========================
-   SKILLS
-========================= */
-
+/* SKILLS */
 .skills{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -456,10 +422,7 @@ section{
 .skill-fill.js{--w:75%;}
 .skill-fill.github{--w:80%;}
 
-/* =========================
-   PROJECTS
-========================= */
-
+/* PROJECTS */
 .project-tools{
     display:flex;
     justify-content:center;
@@ -531,985 +494,5 @@ section{
 }
 
 .tag{
-    font-size:11px;
-    padding:6px 9px;
-    border-radius:20px;
-    background:rgba(0,229,255,.08);
-    color:#00e5ff;
-}
-
-/* =========================
-   RESUME CTA
-========================= */
-
-.resume-box{
-    text-align:center;
-    padding:50px 25px;
-}
-
-.resume-box h2{
-    font-size:35px;
-    margin-bottom:12px;
-}
-
-.resume-box p{
-    color:#888;
-    margin-bottom:25px;
-}
-
-/* =========================
-   CONTACT
-========================= */
-
-.contact-box{
-    max-width:700px;
-    margin:auto;
-    padding:35px;
-}
-
-input,
-textarea{
-    width:100%;
-    padding:15px;
-    margin-bottom:15px;
-    border-radius:10px;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(0,0,0,.25);
-    color:white;
-    outline:none;
-    font-size:15px;
-}
-
-textarea{
-    min-height:150px;
-    resize:vertical;
-}
-
-input:focus,
-textarea:focus{
-    border-color:#00e5ff;
-}
-
-.contact-box button{
-    width:100%;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    padding:40px 20px;
-    text-align:center;
-    border-top:1px solid rgba(255,255,255,.08);
-    color:#666;
-}
-
-footer span{
-    color:#00e5ff;
-}
-
-/* =========================
-   TOP BUTTON
-========================= */
-
-#topBtn{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    width:45px;
-    height:45px;
-    border:none;
-    border-radius:50%;
-    background:#00e5ff;
-    color:#000;
-    font-size:20px;
-    cursor:pointer;
-    display:none;
-    z-index:3000;
-}
-
-/* =========================
-   LIGHT MODE
-========================= */
-
-body.light{
-    background:#f5f7fb;
-    color:#171717;
-}
-
-body.light nav{
-    background:rgba(255,255,255,.8);
-}
-
-body.light nav a{
-    color:#444;
-}
-
-body.light .logo{
-    color:#111;
-}
-
-body.light .glass,
-body.light .project{
-    background:rgba(255,255,255,.75);
-    border-color:rgba(0,0,0,.08);
-}
-
-body.light .about-text,
-body.light .hero-sub,
-body.light .project-body p{
-    color:#666;
-}
-
-body.light .about-text strong{
-    color:#111;
-}
-
-body.light .info-value{
-    color:#333;
-}
-
-body.light input,
-body.light textarea,
-body.light .search{
-    background:white;
-    color:#222;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:850px){
-
-    nav ul{
-        display:none;
-        position:absolute;
-        top:70px;
-        left:0;
-        width:100%;
-        padding:20px;
-        border-radius:15px;
-        background:#0b0d1b;
-        flex-direction:column;
-        text-align:center;
-    }
-
-    nav ul.show{
-        display:flex;
-    }
-
-    .menu-btn{
-        display:block;
-    }
-
-    .about-grid{
-        grid-template-columns:1fr;
-    }
-
-    .projects{
-        grid-template-columns:1fr;
-    }
-
-}
-
-@media(max-width:600px){
-
-    nav{
-        width:94%;
-    }
-
-    .hero h1{
-        font-size:50px;
-    }
-
-    .hero-sub{
-        font-size:17px;
-    }
-
-    .skills{
-        grid-template-columns:1fr;
-    }
-
-    .stats{
-        grid-template-columns:1fr;
-    }
-
-    section{
-        padding:80px 17px;
-    }
-
-    .section-head h2{
-        font-size:32px;
-    }
-
-}
-</style>
-</head>
-
-<body>
-
-<div class="grid-bg"></div>
-
-<!-- LOADER -->
-
-<div id="loader">
-    <div class="loader-box">
-        <div class="loader-logo">V</div>
-        <div class="loader-text">Loading portfolio...</div>
-    </div>
-</div>
-
-<div id="progress"></div>
-
-
-<!-- NAVBAR -->
-
-<nav>
-
-    <div class="logo">
-        Vikas<span>.</span>
-    </div>
-
-    <ul id="navMenu">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-
-    <div class="nav-actions">
-
-        <button class="icon-btn" onclick="toggleTheme()">
-            🌙
-        </button>
-
-        <button class="icon-btn menu-btn" onclick="toggleMenu()">
-            ☰
-        </button>
-
-    </div>
-
-</nav>
-
-
-<!-- HERO -->
-
-<section id="home" class="hero">
-
-    <div class="hero-content">
-
-        <div class="status">
-            <span class="status-dot"></span>
-            Available for learning & opportunities
-        </div>
-
-        <h1>
-            Hi, I'm
-            <span class="gradient">Vikas Kumar</span>
-        </h1>
-
-        <p class="hero-sub">
-            BCA Graduate building
-            <span class="typing" id="typing"></span>
-        </p>
-
-        <div class="hero-buttons">
-
-            <a class="btn btn-primary"
-               href="Vikas_Kumar_Resume.pdf"
-               target="_blank">
-                📄 View Resume
-            </a>
-
-            <a class="btn"
-               href="https://github.com/vikas07ss"
-               target="_blank">
-                🐙 GitHub
-            </a>
-
-            <a class="btn" href="#projects">
-                🚀 Explore Projects
-            </a>
-
-        </div>
-
-        <div class="scroll-down">
-            ↓ Scroll to explore
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section id="about" class="reveal">
-
-<div class="container">
-
-    <div class="section-head">
-        <h2>About Me</h2>
-        <p>A little about my journey</p>
-    </div>
-
-    <div class="about-grid">
-
-        <div class="glass about-text">
-
-            <p>
-                Hello! I'm <strong>Vikas Kumar</strong>,
-                a BCA graduate from Kota, Rajasthan.
-            </p>
-
-            <br>
-
-            <p>
-                I'm interested in web development and software
-                development. I enjoy turning ideas into interactive,
-                responsive and visually attractive websites.
-            </p>
-
-            <br>
-
-            <p>
-                Currently, I'm improving my skills by building
-                practical projects with HTML, CSS and JavaScript
-                and learning more about modern development tools.
-            </p>
-
-        </div>
-
-        <div class="glass info-card">
-
-            <div class="info-item">
-                <div class="info-label">EDUCATION</div>
-                <div class="info-value">BCA — 2026</div>
-            </div>
-
-            <div class="info-item">
-                <div class="info-label">LOCATION</div>
-                <div class="info-value">Kota, Rajasthan</div>
-            </div>
-
-            <div class="info-item">
-                <div class="info-label">EMAIL</div>
-                <div class="info-value">
-                    howeverno10@gmail.com
-                </div>
-            </div>
-
-            <div class="info-item">
-                <div class="info-label">FOCUS</div>
-                <div class="info-value">
-                    Web Development
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="stats">
-
-        <div class="glass stat">
-            <div class="stat-number">3+</div>
-            <div class="stat-label">Projects Built</div>
-        </div>
-
-        <div class="glass stat">
-            <div class="stat-number">4</div>
-            <div class="stat-label">Core Skills</div>
-        </div>
-
-        <div class="glass stat">
-            <div class="stat-number">2026</div>
-            <div class="stat-label">BCA Graduate</div>
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- SKILLS -->
-
-<section id="skills" class="reveal">
-
-<div class="container">
-
-    <div class="section-head">
-        <h2>Skills</h2>
-        <p>Technologies I'm learning and using</p>
-    </div>
-
-    <div class="skills">
-
-        <div class="glass skill">
-
-            <div class="skill-top">
-                <span>HTML</span>
-                <span>90%</span>
-            </div>
-
-            <div class="skill-track">
-                <div class="skill-fill html"></div>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill">
-
-            <div class="skill-top">
-                <span>CSS</span>
-                <span>85%</span>
-            </div>
-
-            <div class="skill-track">
-                <div class="skill-fill css"></div>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill">
-
-            <div class="skill-top">
-                <span>JavaScript</span>
-                <span>75%</span>
-            </div>
-
-            <div class="skill-track">
-                <div class="skill-fill js"></div>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill">
-
-            <div class="skill-top">
-                <span>GitHub</span>
-                <span>80%</span>
-            </div>
-
-            <div class="skill-track">
-                <div class="skill-fill github"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- PROJECTS -->
-
-<section id="projects" class="reveal">
-
-<div class="container">
-
-    <div class="section-head">
-        <h2>Featured Projects</h2>
-        <p>Things I've built while learning</p>
-    </div>
-
-
-    <div class="project-tools">
-
-        <input
-            class="search"
-            id="projectSearch"
-            type="text"
-            placeholder="🔍 Search projects..."
-            onkeyup="searchProjects()"
-        >
-
-    </div>
-
-
-    <div class="projects" id="projectList">
-
-        <div class="glass project">
-
-            <div class="project-top">
-                🌐
-            </div>
-
-            <div class="project-body">
-
-                <h3>Portfolio Website</h3>
-
-                <div class="tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                </div>
-
-                <p>
-                    Modern responsive developer portfolio
-                    with animations, projects, resume and
-                    contact form.
-                </p>
-
-                <a class="btn" href="#home">
-                    View Project →
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="glass project">
-
-            <div class="project-top">
-                📝
-            </div>
-
-            <div class="project-body">
-
-                <h3>To-Do List</h3>
-
-                <div class="tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                </div>
-
-                <p>
-                    Interactive task management application
-                    with localStorage functionality.
-                </p>
-
-                <a class="btn" href="todo.html">
-                    Live Demo →
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="glass project">
-
-            <div class="project-top">
-                🧮
-            </div>
-
-            <div class="project-body">
-
-                <h3>Calculator</h3>
-
-                <div class="tags">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">CSS</span>
-                </div>
-
-                <p>
-                    Functional calculator with keyboard
-                    support and modern responsive interface.
-                </p>
-
-                <a class="btn" href="calculator.html">
-                    Live Demo →
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- RESUME -->
-
-<section class="reveal">
-
-<div class="container">
-
-    <div class="glass resume-box">
-
-        <h2>Want to know more?</h2>
-
-        <p>
-            Check out my resume and GitHub profile.
-        </p>
-
-        <a class="btn btn-primary"
-           href="Vikas_Kumar_Resume.pdf"
-           target="_blank">
-            📄 Open Resume
-        </a>
-
-        <a class="btn"
-           href="https://github.com/vikas07ss"
-           target="_blank">
-            🐙 Visit GitHub
-        </a>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section id="contact" class="reveal">
-
-<div class="container">
-
-    <div class="section-head">
-
-        <h2>Let's Connect</h2>
-
-        <p>
-            Have a question or want to say hello?
-        </p>
-
-    </div>
-
-
-    <div class="glass contact-box">
-
-        <form
-            action="https://formspree.io/f/xwlpebny"
-            method="POST">
-
-            <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                required
-            >
-
-            <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-            >
-
-            <textarea
-                name="message"
-                placeholder="Your Message"
-                required></textarea>
-
-            <button
-                class="btn btn-primary"
-                type="submit">
-                Send Message 🚀
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <p>
-        © <span id="year"></span>
-        <span>Vikas Kumar</span>
-    </p>
-
-    <p>
-        BCA Graduate • Web Development
-    </p>
-
-</footer>
-
-
-<button id="topBtn" onclick="goTop()">↑</button>
-
-
-<script>
-
-/* =========================
-   LOADER
-========================= */
-
-window.addEventListener("load",function(){
-
-    setTimeout(function(){
-
-        document.getElementById("loader").style.opacity="0";
-
-        setTimeout(function(){
-            document.getElementById("loader").style.display="none";
-        },600);
-
-    },700);
-
-});
-
-
-/* =========================
-   TYPING
-========================= */
-
-const words=[
-    "modern websites.",
-    "interactive web apps.",
-    "beautiful interfaces.",
-    "creative digital experiences."
-];
-
-let wi=0;
-let ci=0;
-let deleting=false;
-
-function typeEffect(){
-
-    const el=document.getElementById("typing");
-    const word=words[wi];
-
-    if(!deleting){
-
-        el.textContent=word.substring(0,ci+1);
-        ci++;
-
-        if(ci===word.length){
-
-            deleting=true;
-
-            setTimeout(typeEffect,1100);
-            return;
-        }
-
-    }else{
-
-        el.textContent=word.substring(0,ci-1);
-        ci--;
-
-        if(ci===0){
-
-            deleting=false;
-            wi++;
-
-            if(wi===words.length){
-                wi=0;
-            }
-
-        }
-
-    }
-
-    setTimeout(
-        typeEffect,
-        deleting ? 45 : 75
-    );
-}
-
-typeEffect();
-
-
-/* =========================
-   MOBILE MENU
-========================= */
-
-function toggleMenu(){
-
-    document
-        .getElementById("navMenu")
-        .classList.toggle("show");
-
-}
-
-
-/* =========================
-   THEME
-========================= */
-
-function toggleTheme(){
-
-    document.body.classList.toggle("light");
-
-}
-
-
-/* =========================
-   SCROLL PROGRESS
-========================= */
-
-window.addEventListener("scroll",function(){
-
-    const top=
-        document.documentElement.scrollTop;
-
-    const height=
-        document.documentElement.scrollHeight-
-        document.documentElement.clientHeight;
-
-    const percent=(top/height)*100;
-
-    document.getElementById("progress")
-        .style.width=percent+"%";
-
-});
-
-
-/* =========================
-   REVEAL
-========================= */
-
-function reveal(){
-
-    document
-        .querySelectorAll(".reveal")
-        .forEach(function(el){
-
-            const position=
-                el.getBoundingClientRect().top;
-
-            if(position <
-               window.innerHeight-100){
-
-                el.classList.add("active");
-
-            }
-
-        });
-
-}
-
-window.addEventListener("scroll",reveal);
-reveal();
-
-
-/* =========================
-   SKILL ANIMATION
-========================= */
-
-let skillsAnimated=false;
-
-function animateSkills(){
-
-    const section=
-        document.getElementById("skills");
-
-    if(!section || skillsAnimated) return;
-
-    const position=
-        section.getBoundingClientRect().top;
-
-    if(position < window.innerHeight-100){
-
-        document
-            .querySelectorAll(".skill-fill")
-            .forEach(function(bar){
-
-                bar.style.width=
-                    getComputedStyle(bar)
-                    .getPropertyValue("--w");
-
-            });
-
-        skillsAnimated=true;
-
-    }
-
-}
-
-window.addEventListener("scroll",animateSkills);
-
-
-/* =========================
-   PROJECT SEARCH
-========================= */
-
-function searchProjects(){
-
-    const value=
-        document
-        .getElementById("projectSearch")
-        .value
-        .toLowerCase();
-
-    document
-        .querySelectorAll(".project")
-        .forEach(function(project){
-
-            const text=
-                project.innerText.toLowerCase();
-
-            if(text.includes(value)){
-
-                project.style.display="block";
-
-            }else{
-
-                project.style.display="none";
-
-            }
-
-        });
-
-}
-
-
-/* =========================
-   TOP BUTTON
-========================= */
-
-window.addEventListener("scroll",function(){
-
-    const btn=
-        document.getElementById("topBtn");
-
-    if(document.documentElement.scrollTop>500){
-
-        btn.style.display="block";
-
-    }else{
-
-        btn.style.display="none";
-
-    }
-
-});
-
-
-function goTop(){
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-/* =========================
-   YEAR
-========================= */
-
-document.getElementById("year").textContent=
-    new Date().getFullYear();
-
-</script>
-
-</body>
-</html>
+    font-si
+```
