@@ -1,506 +1,781 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>My Professional Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Developer Portfolio</title>
 
     <style>
+
+        /* =========================
+           BASIC
+        ========================= */
+
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
             scroll-behavior: smooth;
         }
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            color: #111;
-            transition: 0.3s;
+        :root {
+            --bg: #f5f7fb;
+            --text: #111827;
+            --card: rgba(255,255,255,0.82);
+            --nav: rgba(17,17,17,0.92);
+            --border: #e5e7eb;
+            --button: #111827;
+            --muted: #6b7280;
         }
 
-        /* NAVBAR */
+        body.dark {
+            --bg: #0b0f19;
+            --text: #f9fafb;
+            --card: rgba(25,30,42,0.88);
+            --nav: rgba(5,7,12,0.95);
+            --border: #374151;
+            --button: #f9fafb;
+            --muted: #aeb6c4;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: 0.3s;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* =========================
+           SCROLL PROGRESS
+        ========================= */
+
+        #progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 0%;
+            background: linear-gradient(90deg, #7c3aed, #06b6d4);
+            z-index: 9999;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
         nav {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: #111;
-            padding: 16px;
-            text-align: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+
+            gap: 10px;
+            padding: 16px 20px;
+
+            background: var(--nav);
+            backdrop-filter: blur(12px);
+
+            color: white;
         }
 
         nav a {
-            color: white;
             text-decoration: none;
-            margin: 0 12px;
-            font-size: 16px;
+            margin: 0 8px;
+            font-size: 15px;
+            transition: 0.3s;
         }
 
         nav a:hover {
-            text-decoration: underline;
+            color: #60a5fa;
         }
 
-        nav button {
-            padding: 8px 13px;
+        .nav-btn {
             border: none;
-            border-radius: 8px;
+            padding: 9px 14px;
+            border-radius: 20px;
             cursor: pointer;
-            margin-left: 8px;
+            background: white;
+            color: #111;
         }
 
-        /* HERO */
+        /* =========================
+           HERO
+        ========================= */
+
         .hero {
-            min-height: 90vh;
+            min-height: 92vh;
+
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+
             text-align: center;
-            padding: 30px;
+            padding: 40px 20px;
+
+            background:
+                radial-gradient(circle at top left,
+                rgba(124,58,237,0.15),
+                transparent 35%),
+                radial-gradient(circle at bottom right,
+                rgba(6,182,212,0.15),
+                transparent 35%);
+        }
+
+        .avatar {
+            width: 110px;
+            height: 110px;
+
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 50px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+
+            margin-bottom: 25px;
+
+            animation: float 3s ease-in-out infinite;
         }
 
         .hero h1 {
-            font-size: 55px;
+            font-size: clamp(38px, 7vw, 70px);
             margin-bottom: 10px;
-            animation: fadeIn 1.2s;
         }
 
-        .hero span {
-            font-size: 25px;
+        .gradient-text {
+            background: linear-gradient(90deg,#7c3aed,#06b6d4);
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
-        .hero p {
-            font-size: 19px;
-            max-width: 600px;
-            line-height: 1.6;
-        }
-
-        .hero-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 13px 25px;
-            background: #111;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-        }
-
-        .hero-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* SECTIONS */
-        section {
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        section h2 {
-            font-size: 35px;
-            margin-bottom: 40px;
-        }
-
-        /* ABOUT */
-        .about-box {
-            max-width: 750px;
-            margin: auto;
-            font-size: 18px;
-            line-height: 1.7;
-        }
-
-        /* CARDS */
-        .cards {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            width: 250px;
-            padding: 30px 20px;
-            background: white;
-            border-radius: 18px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-        }
-
-        .card h3 {
+        #typing {
+            min-height: 32px;
             font-size: 22px;
-        }
-
-        /* SKILLS */
-        .skill {
-            max-width: 600px;
-            margin: 20px auto;
-            text-align: left;
-        }
-
-        .skill-name {
-            margin-bottom: 7px;
             font-weight: bold;
         }
 
-        .bar {
-            height: 12px;
-            background: #ddd;
-            border-radius: 20px;
-            overflow: hidden;
+        .hero p {
+            max-width: 650px;
+            color: var(--muted);
+            margin-top: 15px;
+            font-size: 18px;
         }
 
-        .html-bar {
-            width: 90%;
-            height: 100%;
-            background: #111;
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
         }
 
-        .css-bar {
-            width: 80%;
-            height: 100%;
-            background: #111;
-        }
+        .btn {
+            display: inline-block;
+            padding: 13px 23px;
 
-        .js-bar {
-            width: 65%;
-            height: 100%;
-            background: #111;
-        }
+            border-radius: 12px;
+            text-decoration: none;
 
-        /* PROJECTS */
-        .project-card {
-            width: 280px;
-            padding: 30px 20px;
-            background: white;
-            border-radius: 18px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            background: var(--button);
+            color: var(--bg);
+
+            border: none;
+            cursor: pointer;
+
             transition: 0.3s;
         }
 
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            padding: 90px 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 38px;
+            margin-bottom: 45px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-card {
+            max-width: 800px;
+            margin: auto;
+
+            padding: 35px;
+
+            border-radius: 22px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            padding: 28px;
+
+            border-radius: 20px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .skill-icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .skill-progress {
+            margin-top: 18px;
+            height: 10px;
+
+            background: #d1d5db;
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            width: 0;
+
+            background: linear-gradient(90deg,#7c3aed,#06b6d4);
+
+            transition: width 1.5s ease;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .project-tools {
+            margin-bottom: 30px;
+        }
+
+        #projectSearch {
+            width: min(500px,90%);
+            padding: 14px 18px;
+
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            background: var(--card);
+            color: var(--text);
+
+            outline: none;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            padding: 30px;
+
+            border-radius: 22px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+
+            transition: 0.3s;
+
+            text-align: left;
+        }
+
         .project-card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-10px);
+        }
+
+        .project-emoji {
+            font-size: 42px;
         }
 
         .project-card h3 {
+            margin: 15px 0 8px;
             font-size: 23px;
         }
 
         .project-card p {
-            min-height: 50px;
+            color: var(--muted);
+            min-height: 65px;
         }
 
-        .project-card a {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 18px;
-            background: #111;
-            color: white;
+        .project-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .small-btn {
+            padding: 9px 14px;
+            border-radius: 9px;
+
+            background: var(--button);
+            color: var(--bg);
+
             text-decoration: none;
-            border-radius: 8px;
+            border: none;
+            cursor: pointer;
         }
 
-        /* CONTACT */
-        .contact-box {
-            max-width: 500px;
+        /* =========================
+           TODO APP
+        ========================= */
+
+        .app-box {
+            max-width: 650px;
+            margin: 30px auto 0;
+
+            padding: 30px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+
+            border-radius: 22px;
+        }
+
+        .todo-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .todo-input input {
+            flex: 1;
+            padding: 13px;
+
+            border-radius: 10px;
+            border: 1px solid var(--border);
+
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .todo-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 12px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .todo-item.completed span {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+
+        .todo-actions button {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* =========================
+           CALCULATOR
+        ========================= */
+
+        .calculator {
+            max-width: 350px;
+            margin: 30px auto 0;
+
+            padding: 20px;
+
+            border-radius: 22px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+        }
+
+        #calcDisplay {
+            width: 100%;
+            height: 65px;
+
+            margin-bottom: 15px;
+
+            padding: 12px;
+
+            font-size: 25px;
+            text-align: right;
+
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 8px;
+        }
+
+        .calc-grid button {
+            height: 55px;
+
+            border: none;
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            background: var(--bg);
+            color: var(--text);
+
+            font-size: 18px;
+        }
+
+        .calc-grid button:hover {
+            transform: scale(1.04);
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-form {
+            max-width: 600px;
             margin: auto;
         }
 
-        .contact-box input,
-        .contact-box textarea {
+        .contact-form input,
+        .contact-form textarea {
+
             width: 100%;
+
             padding: 14px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 10px;
+
+            margin: 8px 0;
+
+            border-radius: 12px;
+
+            border: 1px solid var(--border);
+
+            background: var(--card);
+            color: var(--text);
+
             font-size: 16px;
         }
 
-        .contact-box textarea {
-            height: 130px;
+        .contact-form textarea {
+            height: 150px;
             resize: none;
         }
 
-        .contact-box button {
-            padding: 13px 25px;
-            border: none;
-            border-radius: 10px;
-            background: #111;
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        #message {
-            font-weight: bold;
+        #contactMessage {
             margin-top: 15px;
+            font-weight: bold;
         }
 
-        /* BACK TO TOP */
-        #topBtn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            padding: 12px 16px;
-            border: none;
-            border-radius: 50%;
-            background: #111;
-            color: white;
-            cursor: pointer;
-            display: none;
-        }
+        /* =========================
+           FOOTER
+        ========================= */
 
-        /* FOOTER */
         footer {
+            text-align: center;
+            padding: 30px;
+
             background: #111;
             color: white;
-            text-align: center;
-            padding: 25px;
         }
 
-        /* DARK MODE */
-        .dark {
-            background: #121212;
+        /* =========================
+           BACK TOP
+        ========================= */
+
+        #topBtn {
+
+            position: fixed;
+
+            right: 25px;
+            bottom: 25px;
+
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+            border: none;
+
+            cursor: pointer;
+
+            background: #111;
             color: white;
+
+            display: none;
+
+            z-index: 999;
         }
 
-        .dark .card,
-        .dark .project-card {
-            background: #1e1e1e;
-        }
+        /* =========================
+           TOAST
+        ========================= */
 
-        .dark .bar {
-            background: #444;
-        }
+        #toast {
 
-        .dark .contact-box input,
-        .dark .contact-box textarea {
-            background: #222;
+            position: fixed;
+
+            left: 50%;
+            bottom: 30px;
+
+            transform: translate(-50%,100px);
+
+            padding: 13px 20px;
+
+            background: #111;
             color: white;
-            border-color: #555;
+
+            border-radius: 10px;
+
+            transition: 0.4s;
+
+            z-index: 10000;
         }
 
-        /* ANIMATION */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+        #toast.show {
+            transform: translate(-50%,0);
+        }
 
-            to {
-                opacity: 1;
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
+        @keyframes float {
+
+            0%,100% {
                 transform: translateY(0);
             }
+
+            50% {
+                transform: translateY(-12px);
+            }
         }
 
-        /* MOBILE */
-        @media(max-width: 600px) {
+        .reveal {
+
+            opacity: 0;
+            transform: translateY(30px);
+
+            transition: 0.8s;
+        }
+
+        .reveal.active {
+
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width:800px) {
+
+            .skill-grid,
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                gap: 5px;
+            }
 
             nav a {
-                margin: 0 5px;
                 font-size: 13px;
+                margin: 0 4px;
             }
+
+        }
+
+        @media(max-width:500px) {
 
             .hero h1 {
                 font-size: 38px;
             }
 
-            .hero span {
-                font-size: 20px;
+            .section-title {
+                font-size: 30px;
             }
 
-            section h2 {
-                font-size: 28px;
+            .todo-input {
+                flex-direction: column;
             }
 
-            .card,
-            .project-card {
-                width: 90%;
-                max-width: 320px;
+            .project-actions {
+                flex-wrap: wrap;
             }
+
         }
+
     </style>
 </head>
 
 
 <body>
 
-<!-- NAVBAR -->
+<div id="progress"></div>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
 
 <nav>
+
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
+    <a href="#apps">Apps</a>
     <a href="#contact">Contact</a>
 
-    <button onclick="toggleDarkMode()">🌙</button>
+    <button class="nav-btn" onclick="toggleDarkMode()">
+        🌙 Theme
+    </button>
+
 </nav>
 
 
-<!-- HOME -->
+<!-- =========================
+     HOME
+========================= -->
 
 <section id="home" class="hero">
 
-    <h1>Hi, I'm a Developer 👋</h1>
+    <div class="avatar">
+        💻
+    </div>
 
-    <span>💻 Future Software Developer</span>
+    <h1>
+        Hi, I'm a
+        <span class="gradient-text">
+            Developer
+        </span>
+    </h1>
+
+    <div id="typing"></div>
 
     <p>
-        I am learning HTML, CSS and JavaScript
-        and building my own projects.
+        Welcome to my personal portfolio.
+        I am learning web development and
+        building projects using HTML, CSS
+        and JavaScript.
     </p>
 
-    <a class="hero-btn" href="#projects">
-        🚀 View My Projects
-    </a>
+    <div class="hero-buttons">
 
-</section>
+        <a href="#projects" class="btn">
+            🚀 View Projects
+        </a>
 
-
-<!-- ABOUT -->
-
-<section id="about">
-
-    <h2>👨‍💻 About Me</h2>
-
-    <div class="about-box">
-
-        <p>
-            Welcome to my portfolio website!
-        </p>
-
-        <p>
-            I am learning web development and
-            improving my programming skills by
-            creating real projects.
-        </p>
+        <a href="#contact" class="btn btn-outline">
+            📩 Contact Me
+        </a>
 
     </div>
 
 </section>
 
 
-<!-- SKILLS -->
+<!-- =========================
+     ABOUT
+========================= -->
 
-<section id="skills">
+<section id="about" class="reveal">
 
-    <h2>🛠️ My Skills</h2>
+    <div class="container">
 
-    <div class="cards">
+        <h2 class="section-title">
+            👨‍💻 About Me
+        </h2>
 
-        <div class="card">
-            <h3>HTML</h3>
-            <p>Website Structure</p>
-        </div>
-
-        <div class="card">
-            <h3>CSS</h3>
-            <p>Design & Styling</p>
-        </div>
-
-        <div class="card">
-            <h3>JavaScript</h3>
-            <p>Website Functionality</p>
-        </div>
-
-    </div>
-
-
-    <br><br>
-
-    <div class="skill">
-
-        <div class="skill-name">
-            HTML — 90%
-        </div>
-
-        <div class="bar">
-            <div class="html-bar"></div>
-        </div>
-
-    </div>
-
-
-    <div class="skill">
-
-        <div class="skill-name">
-            CSS — 80%
-        </div>
-
-        <div class="bar">
-            <div class="css-bar"></div>
-        </div>
-
-    </div>
-
-
-    <div class="skill">
-
-        <div class="skill-name">
-            JavaScript — 65%
-        </div>
-
-        <div class="bar">
-            <div class="js-bar"></div>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PROJECTS -->
-
-<section id="projects">
-
-    <h2>🚀 My Projects</h2>
-
-    <div class="cards">
-
-        <div class="project-card">
-
-            <h3>📝 To-Do List</h3>
+        <div class="about-card">
 
             <p>
-                A task management application.
+                Hello and welcome!
             </p>
 
-            <a href="#projects"
-               onclick="openProject('To-Do List')">
-                View Project
-            </a>
-
-        </div>
-
-
-        <div class="project-card">
-
-            <h3>🧮 Calculator</h3>
+            <br>
 
             <p>
-                A working JavaScript calculator.
+                I am learning software and web
+                development by creating projects
+                and experimenting with new ideas.
             </p>
 
-            <a href="#projects"
-               onclick="openProject('Calculator')">
-                View Project
-            </a>
-
-        </div>
-
-
-        <div class="project-card">
-
-            <h3>🌐 Portfolio</h3>
+            <br>
 
             <p>
-                My personal developer website.
+                My current focus is HTML, CSS,
+                JavaScript and GitHub.
             </p>
-
-            <a href="#home">
-                View Project
-            </a>
 
         </div>
 
@@ -509,123 +784,1033 @@
 </section>
 
 
-<!-- CONTACT -->
+<!-- =========================
+     SKILLS
+========================= -->
 
-<section id="contact">
+<section id="skills" class="reveal">
 
-    <h2>📩 Contact Me</h2>
+    <div class="container">
 
-    <div class="contact-box">
+        <h2 class="section-title">
+            🛠️ My Skills
+        </h2>
 
-        <input type="text"
-               id="name"
-               placeholder="Your Name">
 
-        <input type="email"
-               id="email"
-               placeholder="Your Email">
+        <div class="skill-grid">
 
-        <textarea id="text"
-                  placeholder="Your Message"></textarea>
 
-        <button onclick="sendMessage()">
-            Send Message 🚀
-        </button>
+            <div class="skill-card">
 
-        <p id="message"></p>
+                <div class="skill-icon">
+                    🌐
+                </div>
+
+                <h3>HTML</h3>
+
+                <p>
+                    Website structure
+                </p>
+
+                <div class="skill-progress">
+
+                    <div
+                        class="skill-fill"
+                        data-width="90%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    🎨
+                </div>
+
+                <h3>CSS</h3>
+
+                <p>
+                    Design and styling
+                </p>
+
+                <div class="skill-progress">
+
+                    <div
+                        class="skill-fill"
+                        data-width="80%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    ⚡
+                </div>
+
+                <h3>JavaScript</h3>
+
+                <p>
+                    Website functionality
+                </p>
+
+                <div class="skill-progress">
+
+                    <div
+                        class="skill-fill"
+                        data-width="65%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     PROJECTS
+========================= -->
+
+<section id="projects" class="reveal">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            🚀 My Projects
+        </h2>
+
+
+        <div class="project-tools">
+
+            <input
+                type="text"
+                id="projectSearch"
+                placeholder="🔍 Search projects..."
+                oninput="searchProjects()">
+
+        </div>
+
+
+        <div class="project-grid" id="projectGrid">
+
+
+            <div class="project-card"
+                 data-name="todo list">
+
+                <div class="project-emoji">
+                    📝
+                </div>
+
+                <h3>To-Do List</h3>
+
+                <p>
+                    A task management application
+                    with saved tasks.
+                </p>
+
+                <div class="project-actions">
+
+                    <a
+                        href="#todo"
+                        class="small-btn">
+                        Open
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="project-card"
+                 data-name="calculator">
+
+                <div class="project-emoji">
+                    🧮
+                </div>
+
+                <h3>Calculator</h3>
+
+                <p>
+                    A working calculator built
+                    using JavaScript.
+                </p>
+
+                <div class="project-actions">
+
+                    <a
+                        href="#calculator"
+                        class="small-btn">
+                        Open
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="project-card"
+                 data-name="portfolio">
+
+                <div class="project-emoji">
+                    🌐
+                </div>
+
+                <h3>Portfolio</h3>
+
+                <p>
+                    This professional personal
+                    portfolio website.
+                </p>
+
+                <div class="project-actions">
+
+                    <a
+                        href="#home"
+                        class="small-btn">
+                        Open
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     APPS
+========================= -->
+
+<section id="apps" class="reveal">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            💻 Working Apps
+        </h2>
+
+
+        <!-- TODO -->
+
+        <div id="todo">
+
+            <h3>📝 Smart To-Do List</h3>
+
+            <div class="app-box">
+
+                <div class="todo-input">
+
+                    <input
+                        type="text"
+                        id="todoInput"
+                        placeholder="Enter a task...">
+
+                    <button
+                        class="btn"
+                        onclick="addTask()">
+                        Add
+                    </button>
+
+                </div>
+
+
+                <ul
+                    id="todoList"
+                    class="todo-list">
+                </ul>
+
+
+                <br>
+
+                <button
+                    class="small-btn"
+                    onclick="clearCompleted()">
+
+                    Clear Completed
+
+                </button>
+
+                <button
+                    class="small-btn"
+                    onclick="clearAllTasks()">
+
+                    Clear All
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <br><br><br>
+
+
+        <!-- CALCULATOR -->
+
+        <div id="calculator">
+
+            <h3>🧮 Advanced Calculator</h3>
+
+            <div class="calculator">
+
+                <input
+                    type="text"
+                    id="calcDisplay"
+                    readonly>
+
+
+                <div class="calc-grid">
+
+                    <button onclick="clearCalc()">C</button>
+                    <button onclick="deleteLast()">⌫</button>
+                    <button onclick="addCalc('%')">%</button>
+                    <button onclick="addCalc('/')">÷</button>
+
+                    <button onclick="addCalc('7')">7</button>
+                    <button onclick="addCalc('8')">8</button>
+                    <button onclick="addCalc('9')">9</button>
+                    <button onclick="addCalc('*')">×</button>
+
+                    <button onclick="addCalc('4')">4</button>
+                    <button onclick="addCalc('5')">5</button>
+                    <button onclick="addCalc('6')">6</button>
+                    <button onclick="addCalc('-')">−</button>
+
+                    <button onclick="addCalc('1')">1</button>
+                    <button onclick="addCalc('2')">2</button>
+                    <button onclick="addCalc('3')">3</button>
+                    <button onclick="addCalc('+')">+</button>
+
+                    <button onclick="addCalc('0')">0</button>
+                    <button onclick="addCalc('.')">.</button>
+                    <button onclick="calculate()">=</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact" class="reveal">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            📩 Contact Me
+        </h2>
+
+
+        <div class="contact-form">
+
+            <input
+                type="text"
+                id="contactName"
+                placeholder="Your Name">
+
+
+            <input
+                type="email"
+                id="contactEmail"
+                placeholder="Your Email">
+
+
+            <textarea
+                id="contactText"
+                placeholder="Your Message">
+            </textarea>
+
+
+            <button
+                class="btn"
+                onclick="sendMessage()">
+
+                Send Message 🚀
+
+            </button>
+
+
+            <p id="contactMessage"></p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
     <p>
-        © 2026 My Portfolio | Built with HTML, CSS & JavaScript 💻
+        © <span id="year"></span>
+        My Portfolio
+    </p>
+
+    <p>
+        Built with HTML • CSS • JavaScript 💻
     </p>
 
 </footer>
 
 
-<!-- TOP BUTTON -->
+<button
+    id="topBtn"
+    onclick="goTop()">
 
-<button id="topBtn" onclick="goTop()">⬆️</button>
+    ⬆️
+
+</button>
+
+
+<div id="toast">
+    Done!
+</div>
 
 
 <script>
 
-    /* DARK MODE */
+    /* =========================
+       TYPING ANIMATION
+    ========================= */
+
+    const words = [
+        "Future Software Developer 💻",
+        "Web Developer 🚀",
+        "JavaScript Learner ⚡",
+        "Problem Solver 🧠"
+    ];
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeEffect() {
+
+        const element =
+            document.getElementById("typing");
+
+        const word = words[wordIndex];
+
+        if (!deleting) {
+
+            element.innerText =
+                word.substring(0, charIndex + 1);
+
+            charIndex++;
+
+            if (charIndex === word.length) {
+
+                deleting = true;
+
+                setTimeout(typeEffect, 1200);
+
+                return;
+            }
+
+        } else {
+
+            element.innerText =
+                word.substring(0, charIndex - 1);
+
+            charIndex--;
+
+            if (charIndex === 0) {
+
+                deleting = false;
+
+                wordIndex =
+                    (wordIndex + 1) % words.length;
+
+            }
+
+        }
+
+        setTimeout(
+            typeEffect,
+            deleting ? 45 : 80
+        );
+    }
+
+    typeEffect();
+
+
+    /* =========================
+       DARK MODE
+    ========================= */
 
     function toggleDarkMode() {
 
         document.body.classList.toggle("dark");
 
+        if (document.body.classList.contains("dark")) {
+
+            localStorage.setItem("theme","dark");
+
+        } else {
+
+            localStorage.setItem("theme","light");
+
+        }
+
     }
 
 
-    /* PROJECT BUTTON */
+    if (localStorage.getItem("theme") === "dark") {
 
-    function openProject(projectName) {
-
-        alert(projectName + " project opened! 🚀");
+        document.body.classList.add("dark");
 
     }
 
 
-    /* CONTACT FORM */
+    /* =========================
+       TODO LIST
+    ========================= */
+
+    let tasks =
+        JSON.parse(localStorage.getItem("myTasks")) || [];
+
+
+    function saveTasks() {
+
+        localStorage.setItem(
+            "myTasks",
+            JSON.stringify(tasks)
+        );
+
+    }
+
+
+    function showTasks() {
+
+        const list =
+            document.getElementById("todoList");
+
+        list.innerHTML = "";
+
+
+        tasks.forEach((task,index) => {
+
+            const li =
+                document.createElement("li");
+
+            li.className = "todo-item";
+
+            if (task.completed) {
+
+                li.classList.add("completed");
+
+            }
+
+
+            li.innerHTML = `
+
+                <span
+                    onclick="completeTask(${index})"
+                    style="cursor:pointer;flex:1">
+
+                    ${escapeHTML(task.text)}
+
+                </span>
+
+                <div class="todo-actions">
+
+                    <button
+                        onclick="completeTask(${index})">
+                        ✔️
+                    </button>
+
+                    <button
+                        onclick="deleteTask(${index})">
+                        🗑️
+                    </button>
+
+                </div>
+
+            `;
+
+            list.appendChild(li);
+
+        });
+
+    }
+
+
+    function escapeHTML(text) {
+
+        const div =
+            document.createElement("div");
+
+        div.textContent = text;
+
+        return div.innerHTML;
+
+    }
+
+
+    function addTask() {
+
+        const input =
+            document.getElementById("todoInput");
+
+        const text =
+            input.value.trim();
+
+
+        if (text === "") {
+
+            showToast("Please enter a task.");
+
+            return;
+
+        }
+
+
+        tasks.push({
+
+            text: text,
+            completed: false
+
+        });
+
+
+        input.value = "";
+
+        saveTasks();
+
+        showTasks();
+
+        showToast("Task added ✅");
+
+    }
+
+
+    function completeTask(index) {
+
+        tasks[index].completed =
+            !tasks[index].completed;
+
+        saveTasks();
+
+        showTasks();
+
+    }
+
+
+    function deleteTask(index) {
+
+        tasks.splice(index,1);
+
+        saveTasks();
+
+        showTasks();
+
+        showToast("Task deleted 🗑️");
+
+    }
+
+
+    function clearCompleted() {
+
+        tasks =
+            tasks.filter(task => !task.completed);
+
+        saveTasks();
+
+        showTasks();
+
+        showToast("Completed tasks cleared.");
+
+    }
+
+
+    function clearAllTasks() {
+
+        tasks = [];
+
+        saveTasks();
+
+        showTasks();
+
+        showToast("All tasks cleared.");
+
+    }
+
+
+    document
+        .getElementById("todoInput")
+        .addEventListener("keydown", function(event) {
+
+            if (event.key === "Enter") {
+
+                addTask();
+
+            }
+
+        });
+
+
+    showTasks();
+
+
+    /* =========================
+       CALCULATOR
+    ========================= */
+
+    let calc =
+        document.getElementById("calcDisplay");
+
+
+    function addCalc(value) {
+
+        calc.value += value;
+
+    }
+
+
+    function clearCalc() {
+
+        calc.value = "";
+
+    }
+
+
+    function deleteLast() {
+
+        calc.value =
+            calc.value.slice(0,-1);
+
+    }
+
+
+    function calculate() {
+
+        try {
+
+            if (calc.value === "") return;
+
+            let expression =
+                calc.value.replace(/%/g,"/100");
+
+            let result =
+                Function(
+                    '"use strict"; return (' +
+                    expression +
+                    ')'
+                )();
+
+            calc.value = result;
+
+        } catch {
+
+            calc.value = "Error";
+
+            setTimeout(clearCalc,800);
+
+        }
+
+    }
+
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                /[0-9+\-*/.%]/.test(event.key)
+            ) {
+
+                addCalc(event.key);
+
+            }
+
+            if (event.key === "Enter") {
+
+                calculate();
+
+            }
+
+            if (event.key === "Backspace") {
+
+                deleteLast();
+
+            }
+
+            if (event.key === "Escape") {
+
+                clearCalc();
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       PROJECT SEARCH
+    ========================= */
+
+    function searchProjects() {
+
+        const search =
+            document
+            .getElementById("projectSearch")
+            .value
+            .toLowerCase();
+
+
+        const projects =
+            document.querySelectorAll(
+                ".project-card"
+            );
+
+
+        projects.forEach(project => {
+
+            const name =
+                project
+                .getAttribute("data-name");
+
+
+            if (name.includes(search)) {
+
+                project.style.display = "";
+
+            } else {
+
+                project.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* =========================
+       CONTACT
+    ========================= */
 
     function sendMessage() {
 
-        let name = document.getElementById("name").value;
-        let email = document.getElementById("email").value;
-        let text = document.getElementById("text").value;
+        const name =
+            document.getElementById("contactName").value.trim();
 
-        let message = document.getElementById("message");
+        const email =
+            document.getElementById("contactEmail").value.trim();
 
-        if (name === "" || email === "" || text === "") {
+        const text =
+            document.getElementById("contactText").value.trim();
 
-            message.innerText = "Please fill all fields.";
+        const message =
+            document.getElementById("contactMessage");
 
-        } else {
+
+        if (
+            name === "" ||
+            email === "" ||
+            text === ""
+        ) {
 
             message.innerText =
-                "Message submitted successfully! 🎉";
+                "Please fill all fields.";
+
+            message.style.color = "red";
+
+            return;
 
         }
+
+
+        message.innerText =
+            "Message submitted successfully! 🎉";
+
+        message.style.color = "green";
+
+
+        document.getElementById("contactName").value = "";
+        document.getElementById("contactEmail").value = "";
+        document.getElementById("contactText").value = "";
 
     }
 
 
-    /* BACK TO TOP */
+    /* =========================
+       SCROLL PROGRESS
+    ========================= */
 
-    window.onscroll = function() {
+    window.addEventListener(
+        "scroll",
+        function() {
 
-        let button = document.getElementById("topBtn");
+            const scrollTop =
+                document.documentElement.scrollTop;
 
-        if (document.documentElement.scrollTop > 300) {
+            const height =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
 
-            button.style.display = "block";
+            const percentage =
+                (scrollTop / height) * 100;
 
-        } else {
+            document.getElementById(
+                "progress"
+            ).style.width =
+                percentage + "%";
 
-            button.style.display = "none";
+
+            /* TOP BUTTON */
+
+            const top =
+                document.getElementById("topBtn");
+
+            if (scrollTop > 400) {
+
+                top.style.display = "block";
+
+            } else {
+
+                top.style.display = "none";
+
+            }
 
         }
+    );
 
-    };
 
+    /* =========================
+       BACK TO TOP
+    ========================= */
 
     function goTop() {
 
         window.scrollTo({
+
             top: 0,
+
             behavior: "smooth"
+
         });
 
     }
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+
+    function revealOnScroll() {
+
+        revealElements.forEach(element => {
+
+            const position =
+                element.getBoundingClientRect().top;
+
+            if (
+                position <
+                window.innerHeight - 100
+            ) {
+
+                element.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        revealOnScroll
+    );
+
+    revealOnScroll();
+
+
+    /* =========================
+       SKILL ANIMATION
+    ========================= */
+
+    const skillFills =
+        document.querySelectorAll(".skill-fill");
+
+
+    setTimeout(function() {
+
+        skillFills.forEach(fill => {
+
+            fill.style.width =
+                fill.getAttribute("data-width");
+
+        });
+
+    },500);
+
+
+    /* =========================
+       TOAST
+    ========================= */
+
+    function showToast(text) {
+
+        const toast =
+            document.getElementById("toast");
+
+        toast.innerText = text;
+
+        toast.classList.add("show");
+
+
+        setTimeout(function() {
+
+            toast.classList.remove("show");
+
+        },2000);
+
+    }
+
+
+    /* =========================
+       CURRENT YEAR
+    ========================= */
+
+    document.getElementById("year")
+        .innerText =
+        new Date().getFullYear();
 
 </script>
 
