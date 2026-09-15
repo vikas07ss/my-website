@@ -1,11 +1,10 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Vikas Kumar | BCA Developer</title>
+<title>Vikas Kumar | Freelance Web Developer</title>
 
 <style>
 *{
@@ -60,7 +59,7 @@ body{
     to{transform:scale(1.12);}
 }
 
-/* SCROLL PROGRESS */
+/* PROGRESS */
 #progress{
     position:fixed;
     top:0;
@@ -108,7 +107,7 @@ body::after{
     z-index:-3;
 }
 
-/* NAVBAR */
+/* NAV */
 nav{
     position:fixed;
     top:15px;
@@ -184,7 +183,7 @@ nav a:hover{
 }
 
 .hero-content{
-    max-width:900px;
+    max-width:950px;
 }
 
 .status{
@@ -209,8 +208,8 @@ nav a:hover{
 }
 
 .hero h1{
-    font-size:clamp(48px,9vw,92px);
-    line-height:1;
+    font-size:clamp(45px,8vw,88px);
+    line-height:1.05;
     margin-bottom:25px;
 }
 
@@ -223,8 +222,8 @@ nav a:hover{
 .hero-sub{
     color:#999;
     font-size:20px;
-    line-height:1.6;
-    max-width:700px;
+    line-height:1.7;
+    max-width:750px;
     margin:auto;
 }
 
@@ -381,6 +380,44 @@ section{
     margin-top:7px;
 }
 
+/* SERVICES */
+.services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.service{
+    padding:30px;
+    transition:.35s;
+}
+
+.service:hover{
+    transform:translateY(-8px);
+    border-color:#7c3aed;
+}
+
+.service-icon{
+    font-size:42px;
+    margin-bottom:18px;
+}
+
+.service h3{
+    margin-bottom:12px;
+}
+
+.service p{
+    color:#888;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.service-price{
+    margin-top:20px;
+    color:#00e5ff;
+    font-weight:bold;
+}
+
 /* SKILLS */
 .skills{
     display:grid;
@@ -501,6 +538,24 @@ section{
     color:#00e5ff;
 }
 
+/* CTA */
+.cta-box{
+    text-align:center;
+    padding:60px 25px;
+}
+
+.cta-box h2{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.cta-box p{
+    color:#888;
+    max-width:650px;
+    margin:0 auto 25px;
+    line-height:1.7;
+}
+
 /* RESUME */
 .resume-box{
     text-align:center;
@@ -557,13 +612,14 @@ footer{
     text-align:center;
     border-top:1px solid rgba(255,255,255,.08);
     color:#666;
+    line-height:1.8;
 }
 
 footer span{
     color:#00e5ff;
 }
 
-/* TOP BUTTON */
+/* TOP */
 #topBtn{
     position:fixed;
     right:20px;
@@ -606,7 +662,8 @@ body.light .project{
 
 body.light .about-text,
 body.light .hero-sub,
-body.light .project-body p{
+body.light .project-body p,
+body.light .service p{
     color:#666;
 }
 
@@ -653,7 +710,8 @@ body.light .search{
         grid-template-columns:1fr;
     }
 
-    .projects{
+    .projects,
+    .services{
         grid-template-columns:1fr;
     }
 }
@@ -665,7 +723,7 @@ body.light .search{
     }
 
     .hero h1{
-        font-size:50px;
+        font-size:48px;
     }
 
     .hero-sub{
@@ -686,6 +744,10 @@ body.light .search{
 
     .section-head h2{
         font-size:32px;
+    }
+
+    .cta-box h2{
+        font-size:30px;
     }
 }
 </style>
@@ -714,9 +776,9 @@ body.light .search{
 
     <ul id="navMenu">
         <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li><a href="#projects">Work</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 
@@ -741,25 +803,32 @@ body.light .search{
 
         <div class="status">
             <span class="status-dot"></span>
-            Available for learning & opportunities
+            Available for Freelance Projects
         </div>
 
         <h1>
-            Hi, I'm
-            <span class="gradient">Vikas Kumar</span>
+            I Build
+            <span class="gradient">Modern Websites</span>
         </h1>
 
         <p class="hero-sub">
-            BCA Graduate building
+            Hi, I'm <strong>Vikas Kumar</strong>.
+            I create responsive and modern websites for
+            portfolios, businesses, landing pages and web projects.
+        </p>
+
+        <p class="hero-sub" style="margin-top:10px;">
             <span class="typing" id="typing"></span>
         </p>
 
         <div class="hero-buttons">
 
-            <a class="btn btn-primary"
-               href="Vikas_Kumar_Resume.pdf"
-               target="_blank">
-                📄 View Resume
+            <a class="btn btn-primary" href="#contact">
+                🚀 Hire Me
+            </a>
+
+            <a class="btn" href="#projects">
+                💻 View My Work
             </a>
 
             <a class="btn"
@@ -768,17 +837,83 @@ body.light .search{
                 🐙 GitHub
             </a>
 
-            <a class="btn" href="#projects">
-                🚀 Explore Projects
-            </a>
-
         </div>
 
         <div class="scroll-down">
-            ↓ Scroll to explore
+            ↓ Explore my services
         </div>
 
     </div>
+
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="reveal">
+
+<div class="container">
+
+    <div class="section-head">
+        <h2>What I Can Build</h2>
+        <p>Simple, modern and responsive web solutions</p>
+    </div>
+
+    <div class="services">
+
+        <div class="glass service">
+
+            <div class="service-icon">🌐</div>
+
+            <h3>Business Website</h3>
+
+            <p>
+                Modern responsive website with sections
+                for services, about, contact and business
+                information.
+            </p>
+
+            <div class="service-price">
+                Starting from ₹1,500
+            </div>
+
+        </div>
+
+        <div class="glass service">
+
+            <div class="service-icon">🚀</div>
+
+            <h3>Landing Page</h3>
+
+            <p>
+                Clean and attractive landing pages designed
+                to present a product, service, event or idea.
+            </p>
+
+            <div class="service-price">
+                Starting from ₹800
+            </div>
+
+        </div>
+
+        <div class="glass service">
+
+            <div class="service-icon">⚙️</div>
+
+            <h3>Web Tools</h3>
+
+            <p>
+                Small interactive web applications such as
+                calculators, task apps, forms and custom tools.
+            </p>
+
+            <div class="service-price">
+                Starting from ₹500
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 </section>
 
@@ -789,7 +924,7 @@ body.light .search{
 
     <div class="section-head">
         <h2>About Me</h2>
-        <p>A little about my journey</p>
+        <p>Developer focused on practical web solutions</p>
     </div>
 
     <div class="about-grid">
@@ -798,23 +933,24 @@ body.light .search{
 
             <p>
                 Hello! I'm <strong>Vikas Kumar</strong>,
-                a BCA graduate from Kota, Rajasthan.
+                a BCA graduate interested in web development
+                and software development.
             </p>
 
             <br>
 
             <p>
-                I'm interested in web development and software
-                development. I enjoy turning ideas into interactive,
-                responsive and visually attractive websites.
+                I build websites using HTML, CSS and JavaScript
+                with a focus on clean design, responsiveness
+                and user-friendly interfaces.
             </p>
 
             <br>
 
             <p>
-                Currently, I'm improving my skills by building
-                practical projects with HTML, CSS and JavaScript
-                and learning more about modern development tools.
+                My goal is to turn ideas and requirements into
+                functional websites that work smoothly across
+                desktop and mobile devices.
             </p>
 
         </div>
@@ -839,7 +975,7 @@ body.light .search{
             </div>
 
             <div class="info-item">
-                <div class="info-label">FOCUS</div>
+                <div class="info-label">SERVICE</div>
                 <div class="info-value">
                     Web Development
                 </div>
@@ -862,8 +998,8 @@ body.light .search{
         </div>
 
         <div class="glass stat">
-            <div class="stat-number">2026</div>
-            <div class="stat-label">BCA Graduate</div>
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Responsive Focus</div>
         </div>
 
     </div>
@@ -879,12 +1015,13 @@ body.light .search{
 
     <div class="section-head">
         <h2>Skills</h2>
-        <p>Technologies I'm learning and using</p>
+        <p>Technologies I use to build web projects</p>
     </div>
 
     <div class="skills">
 
         <div class="glass skill">
+
             <div class="skill-top">
                 <span>HTML</span>
                 <span>90%</span>
@@ -893,9 +1030,11 @@ body.light .search{
             <div class="skill-track">
                 <div class="skill-fill html"></div>
             </div>
+
         </div>
 
         <div class="glass skill">
+
             <div class="skill-top">
                 <span>CSS</span>
                 <span>85%</span>
@@ -904,9 +1043,11 @@ body.light .search{
             <div class="skill-track">
                 <div class="skill-fill css"></div>
             </div>
+
         </div>
 
         <div class="glass skill">
+
             <div class="skill-top">
                 <span>JavaScript</span>
                 <span>75%</span>
@@ -915,9 +1056,11 @@ body.light .search{
             <div class="skill-track">
                 <div class="skill-fill js"></div>
             </div>
+
         </div>
 
         <div class="glass skill">
+
             <div class="skill-top">
                 <span>GitHub</span>
                 <span>80%</span>
@@ -926,6 +1069,7 @@ body.light .search{
             <div class="skill-track">
                 <div class="skill-fill github"></div>
             </div>
+
         </div>
 
     </div>
@@ -940,8 +1084,13 @@ body.light .search{
 <div class="container">
 
     <div class="section-head">
-        <h2>Featured Projects</h2>
-        <p>Things I've built while learning</p>
+
+        <h2>My Work</h2>
+
+        <p>
+            A selection of projects I've built
+        </p>
+
     </div>
 
     <div class="project-tools">
@@ -967,7 +1116,7 @@ body.light .search{
 
             <div class="project-body">
 
-                <h3>Portfolio Website</h3>
+                <h3>Developer Portfolio</h3>
 
                 <div class="tags">
                     <span class="tag">HTML</span>
@@ -976,9 +1125,9 @@ body.light .search{
                 </div>
 
                 <p>
-                    Modern responsive developer portfolio
-                    with animations, projects, resume and
-                    contact form.
+                    Modern responsive portfolio website
+                    with animations, project showcase,
+                    resume and contact form.
                 </p>
 
                 <a class="btn" href="#home">
@@ -1008,10 +1157,12 @@ body.light .search{
 
                 <p>
                     Interactive task management application
-                    with localStorage functionality.
+                    with browser storage functionality.
                 </p>
 
-                <a class="btn" href="todo.html" target="_blank">
+                <a class="btn"
+                   href="todo.html"
+                   target="_blank">
                     Live Demo →
                 </a>
 
@@ -1037,10 +1188,12 @@ body.light .search{
 
                 <p>
                     Functional calculator with keyboard
-                    support and modern responsive interface.
+                    support and responsive interface.
                 </p>
 
-                <a class="btn" href="calculator.html" target="_blank">
+                <a class="btn"
+                   href="calculator.html"
+                   target="_blank">
                     Live Demo →
                 </a>
 
@@ -1066,11 +1219,14 @@ body.light .search{
                 </div>
 
                 <p>
-                    Weather application that searches cities
-                    and displays live weather information.
+                    Weather application using an API to
+                    search cities and display current
+                    weather information.
                 </p>
 
-                <a class="btn" href="weather.html" target="_blank">
+                <a class="btn"
+                   href="weather.html"
+                   target="_blank">
                     Live Demo →
                 </a>
 
@@ -1087,7 +1243,7 @@ body.light .search{
 
             <div class="project-body">
 
-                <h3>Kota Fitness Studio</h3>
+                <h3>Fitness Studio Website</h3>
 
                 <div class="tags">
                     <span class="tag">HTML</span>
@@ -1096,18 +1252,44 @@ body.light .search{
                 </div>
 
                 <p>
-                    Premium business website concept for a
-                    modern fitness studio with memberships,
-                    trainers and contact section.
+                    Client-style business website concept
+                    featuring services, trainers, memberships,
+                    gallery and contact sections.
                 </p>
 
-                <a class="btn" href="fitness.html" target="_blank">
+                <a class="btn"
+                   href="fitness.html"
+                   target="_blank">
                     Live Demo →
                 </a>
 
             </div>
 
         </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+<section class="reveal">
+
+<div class="container">
+
+    <div class="glass cta-box">
+
+        <h2>Have a Website Idea?</h2>
+
+        <p>
+            Tell me what you need and I'll help turn your
+            idea into a modern, responsive web experience.
+        </p>
+
+        <a class="btn btn-primary" href="#contact">
+            🚀 Start a Project
+        </a>
 
     </div>
 
@@ -1153,10 +1335,10 @@ body.light .search{
 
     <div class="section-head">
 
-        <h2>Let's Connect</h2>
+        <h2>Let's Work Together</h2>
 
         <p>
-            Have a question or want to say hello?
+            Have a project in mind? Send me the details.
         </p>
 
     </div>
@@ -1183,13 +1365,13 @@ body.light .search{
 
             <textarea
                 name="message"
-                placeholder="Your Message"
+                placeholder="Tell me about your project..."
                 required></textarea>
 
             <button
                 class="btn btn-primary"
                 type="submit">
-                Send Message 🚀
+                Send Project Request 🚀
             </button>
 
         </form>
@@ -1209,7 +1391,7 @@ body.light .search{
     </p>
 
     <p>
-        BCA Graduate • Web Development
+        Freelance Web Developer • HTML • CSS • JavaScript
     </p>
 
 </footer>
@@ -1236,10 +1418,10 @@ window.addEventListener("load",function(){
 
 /* TYPING */
 const words=[
-    "modern websites.",
-    "interactive web apps.",
-    "beautiful interfaces.",
-    "creative digital experiences."
+    "Responsive websites.",
+    "Landing pages.",
+    "Interactive web apps.",
+    "Modern user interfaces."
 ];
 
 let wi=0;
@@ -1352,7 +1534,7 @@ window.addEventListener("scroll",reveal);
 reveal();
 
 
-/* SKILL ANIMATION */
+/* SKILLS */
 let skillsAnimated=false;
 
 function animateSkills(){
@@ -1454,4 +1636,3 @@ document.getElementById("year").textContent=
 
 </body>
 </html>
-```
