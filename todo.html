@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>To-Do List</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #111827;
+    transition: 0.3s;
+}
+
+body.dark {
+    background: #0b0f19;
+    color: white;
+}
+
+nav {
+    background: #111;
+    padding: 18px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 12px;
+}
+
+.container {
+    width: 90%;
+    max-width: 650px;
+    margin: 70px auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+.app {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+}
+
+.dark .app {
+    background: #1b2230;
+}
+
+.input-area {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+button {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: #111827;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 25px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+li span {
+    flex: 1;
+    text-align: left;
+    cursor: pointer;
+}
+
+.completed span {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.actions button {
+    background: transparent;
+    color: inherit;
+    padding: 5px;
+}
+
+.bottom-buttons {
+    margin-top: 20px;
+}
+
+@media(max-width:500px) {
+
+    .input-area {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">🏠 Portfolio</a>
+    <a href="calculator.html">🧮 Calculator</a>
+
+    <button onclick="toggleDark()">
+        🌙
+    </button>
+</nav>
+
+
+<div class="container">
+
+    <h1>📝 To-Do List</h1>
+
+    <p>
+        Manage your tasks easily.
+    </p>
+
+    <div class="app">
+
+        <div class="input-area">
+
+            <input
+                id="taskInput"
+                type="text"
+                placeholder="Enter your task...">
+
+            <button onclick="addTask()">
+                Add Task
+            </button>
+
+        </div>
+
+
+        <ul id="taskList"></ul>
+
+
+        <div class="bottom-buttons">
+
+            <button onclick="clearCompleted()">
+                Clear Completed
+            </button>
+
+            <button onclick="clearAll()">
+                Clear All
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let tasks =
+    JSON.parse(localStorage.getItem("todoTasks")) || [];
+
+
+function save() {
+
+    localStorage.setItem(
+        "todoTasks",
+        JSON.stringify(tasks)
+    );
+
+}
+
+
+function displayTasks() {
+
+    const list =
+        document.getElementById("taskList");
+
+    list.innerHTML = "";
+
+
+    tasks.forEach(function(task, index) {
+
+        const li =
+            document.createElement("li");
+
+
+        if (task.completed) {
+
+            li.classList.add("completed");
+
+        }
+
+
+        li.innerHTML = `
+
+            <span onclick="completeTask(${index})">
+                ${escapeHTML(task.text)}
+            </span>
+
+            <div class="actions">
+
+                <button
+                    onclick="completeTask(${index})">
+                    ✔️
+                </button>
+
+                <button
+                    onclick="deleteTask(${index})">
+                    🗑️
+                </button>
+
+            </div>
+
+        `;
+
+
+        list.appendChild(li);
+
+    });
+
+}
+
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+function addTask() {
+
+    const input =
+        document.getElementById("taskInput");
+
+    const text =
+        input.value.trim();
+
+
+    if (text === "") {
+
+        alert("Please enter a task.");
+
+        return;
+
+    }
+
+
+    tasks.push({
+
+        text: text,
+        completed: false
+
+    });
+
+
+    input.value = "";
+
+    save();
+
+    displayTasks();
+
+}
+
+
+function completeTask(index) {
+
+    tasks[index].completed =
+        !tasks[index].completed;
+
+    save();
+
+    displayTasks();
+
+}
+
+
+function deleteTask(index) {
+
+    tasks.splice(index, 1);
+
+    save();
+
+    displayTasks();
+
+}
+
+
+function clearCompleted() {
+
+    tasks =
+        tasks.filter(function(task) {
+
+            return !task.completed;
+
+        });
+
+
+    save();
+
+    displayTasks();
+
+}
+
+
+function clearAll() {
+
+    tasks = [];
+
+    save();
+
+    displayTasks();
+
+}
+
+
+document
+.getElementById("taskInput")
+.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+
+        addTask();
+
+    }
+
+});
+
+
+function toggleDark() {
+
+    document.body.classList.toggle("dark");
+
+}
+
+
+displayTasks();
+
+</script>
+
+</body>
+</html>
