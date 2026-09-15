@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Developer Portfolio</title>
+
+    <title>Vikas Kumar | BCA Graduate</title>
 
     <style>
         * {
@@ -35,187 +36,124 @@
             font-weight: bold;
         }
 
-        .nav-btn {
-            padding: 9px 14px;
+        nav button {
+            padding: 8px 14px;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
-            margin-left: 8px;
+            margin-left: 10px;
         }
 
         section {
-            padding: 75px 20px;
+            padding: 70px 20px;
+            text-align: center;
         }
 
         .hero {
-            min-height: 90vh;
+            min-height: 500px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
         }
 
-        .avatar {
-            font-size: 70px;
-        }
-
-        h1 {
+        .hero h1 {
             font-size: 50px;
-            margin: 15px 0;
-        }
-
-        .gradient-text {
-            background: linear-gradient(90deg, #6a5cff, #00aaff);
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        #typing {
-            font-size: 22px;
-            font-weight: bold;
-            min-height: 30px;
+            margin-bottom: 10px;
         }
 
         .hero p {
-            max-width: 650px;
-            line-height: 1.7;
-            font-size: 18px;
+            font-size: 20px;
         }
 
-        .btn,
-        .small-btn {
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .btn {
             display: inline-block;
-            padding: 12px 20px;
+            padding: 12px 22px;
             margin: 7px;
-            border-radius: 9px;
             background: #111;
             color: white;
             text-decoration: none;
+            border-radius: 8px;
             border: none;
             cursor: pointer;
+            font-size: 15px;
         }
 
-        .btn-outline {
-            background: transparent;
-            color: #111;
-            border: 2px solid #111;
+        .btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.85;
         }
 
         .container {
             max-width: 1000px;
             margin: auto;
-            text-align: center;
         }
 
-        .section-title {
-            font-size: 35px;
-            margin-bottom: 35px;
-        }
-
-        .about-box,
-        .contact-box {
-            max-width: 750px;
-            margin: auto;
-            padding: 30px;
-            background: white;
-            border-radius: 18px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
-        }
-
-        .about-box p {
-            line-height: 1.8;
-        }
-
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
         }
 
-        .skill {
+        .card {
             background: white;
             padding: 25px;
+            width: 280px;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
             transition: 0.3s;
         }
 
-        .skill:hover,
-        .project:hover {
-            transform: translateY(-7px);
+        .card:hover {
+            transform: translateY(-8px);
         }
 
-        .bar {
-            height: 10px;
+        .skill {
+            margin: 15px auto;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .skill-bar {
             background: #ddd;
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
-            margin-top: 15px;
+            height: 12px;
         }
 
-        .bar span {
-            display: block;
+        .skill-fill {
             height: 100%;
+            width: 85%;
             background: #111;
         }
 
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        .project {
+        .contact-box {
+            max-width: 500px;
+            margin: auto;
             background: white;
-            padding: 28px;
-            border-radius: 18px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: 0.3s;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
         }
 
-        .project p {
-            line-height: 1.6;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        input,
-        textarea {
+        .contact-box input,
+        .contact-box textarea {
             width: 100%;
-            padding: 14px;
+            padding: 13px;
+            margin: 8px 0;
             border: 1px solid #ccc;
-            border-radius: 9px;
-            font-size: 16px;
+            border-radius: 8px;
+            font-size: 15px;
         }
 
-        textarea {
-            min-height: 140px;
+        .contact-box textarea {
+            height: 120px;
             resize: vertical;
-        }
-
-        form button {
-            padding: 14px;
-            border: none;
-            border-radius: 9px;
-            background: #111;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .social a {
-            display: inline-block;
-            margin: 8px;
-            padding: 12px 18px;
-            border-radius: 9px;
-            background: #111;
-            color: white;
-            text-decoration: none;
         }
 
         footer {
@@ -232,50 +170,47 @@
             color: white;
         }
 
-        .dark .about-box,
-        .dark .contact-box,
-        .dark .skill,
-        .dark .project {
+        .dark .card,
+        .dark .contact-box {
             background: #1e1e1e;
             color: white;
         }
 
-        .dark .btn-outline {
-            color: white;
-            border-color: white;
-        }
-
-        .dark input,
-        .dark textarea {
-            background: #2b2b2b;
+        .dark .contact-box input,
+        .dark .contact-box textarea {
+            background: #333;
             color: white;
             border-color: #555;
         }
 
-        .dark .bar {
+        .dark .skill-bar {
             background: #444;
+        }
+
+        .dark .skill-fill {
+            background: white;
         }
 
         /* MOBILE */
 
-        @media (max-width: 700px) {
+        @media(max-width: 600px) {
 
             nav a {
-                margin: 4px;
+                margin: 5px;
                 font-size: 13px;
             }
 
-            h1 {
-                font-size: 38px;
+            .hero h1 {
+                font-size: 36px;
             }
 
-            .skills,
-            .projects {
-                grid-template-columns: 1fr;
+            .hero p {
+                font-size: 17px;
             }
 
-            section {
-                padding: 60px 15px;
+            .card {
+                width: 100%;
+                max-width: 330px;
             }
         }
     </style>
@@ -292,9 +227,7 @@
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
 
-    <button class="nav-btn" onclick="toggleDarkMode()">
-        🌙 Theme
-    </button>
+    <button onclick="toggleDarkMode()">🌙 Dark</button>
 </nav>
 
 
@@ -302,30 +235,22 @@
 
 <section id="home" class="hero">
 
-    <div class="avatar">💻</div>
-
-    <h1>
-        Hi, I'm a
-        <span class="gradient-text">Developer</span>
-    </h1>
-
-    <div id="typing"></div>
+    <h1>Hi, I'm Vikas 👋</h1>
 
     <p>
-        Welcome to my personal portfolio.
-        I am learning web development and
-        building projects using HTML, CSS
-        and JavaScript.
+        BCA Graduate | Web Development Learner 💻
     </p>
 
-    <div>
-        <a href="#projects" class="btn">
-            🚀 View Projects
+    <div class="buttons">
+
+        <a class="btn" href="Vikas_Kumar_Resume.pdf" target="_blank">
+            📄 Download Resume
         </a>
 
-        <a href="#contact" class="btn btn-outline">
-            📩 Contact Me
+        <a class="btn" href="https://github.com/vikas07ss" target="_blank">
+            🐙 GitHub
         </a>
+
     </div>
 
 </section>
@@ -337,25 +262,17 @@
 
     <div class="container">
 
-        <h2 class="section-title">
-            👨‍💻 About Me
-        </h2>
+        <h2>About Me</h2>
 
-        <div class="about-box">
+        <p>
+            I am Vikas Kumar, a BCA graduate interested in
+            web development and software development.
+        </p>
 
-            <p>
-                Hello! I am learning web development
-                and building projects using HTML,
-                CSS and JavaScript.
-            </p>
-
-            <p>
-                My goal is to improve my programming
-                skills and create useful websites
-                and applications.
-            </p>
-
-        </div>
+        <p>
+            I enjoy learning new technologies and building
+            practical web projects using HTML, CSS and JavaScript.
+        </p>
 
     </div>
 
@@ -368,39 +285,34 @@
 
     <div class="container">
 
-        <h2 class="section-title">
-            ⚡ My Skills
-        </h2>
+        <h2>My Skills</h2>
 
-        <div class="skills">
-
-            <div class="skill">
-                <h3>HTML</h3>
-                <p>Web Page Structure</p>
-
-                <div class="bar">
-                    <span style="width:85%"></span>
-                </div>
+        <div class="skill">
+            <b>HTML</b>
+            <div class="skill-bar">
+                <div class="skill-fill"></div>
             </div>
+        </div>
 
-            <div class="skill">
-                <h3>CSS</h3>
-                <p>Design & Responsive Layout</p>
-
-                <div class="bar">
-                    <span style="width:75%"></span>
-                </div>
+        <div class="skill">
+            <b>CSS</b>
+            <div class="skill-bar">
+                <div class="skill-fill"></div>
             </div>
+        </div>
 
-            <div class="skill">
-                <h3>JavaScript</h3>
-                <p>Web Interactivity</p>
-
-                <div class="bar">
-                    <span style="width:65%"></span>
-                </div>
+        <div class="skill">
+            <b>JavaScript</b>
+            <div class="skill-bar">
+                <div class="skill-fill"></div>
             </div>
+        </div>
 
+        <div class="skill">
+            <b>GitHub</b>
+            <div class="skill-bar">
+                <div class="skill-fill"></div>
+            </div>
         </div>
 
     </div>
@@ -414,55 +326,53 @@
 
     <div class="container">
 
-        <h2 class="section-title">
-            🚀 My Projects
-        </h2>
+        <h2>My Projects</h2>
 
-        <div class="projects">
+        <div class="cards">
 
-            <div class="project">
+            <div class="card">
+
+                <h3>🌐 Portfolio Website</h3>
+
+                <p>
+                    A responsive personal portfolio website
+                    created using HTML, CSS and JavaScript.
+                </p>
+
+                <a class="btn" href="#home">
+                    View Portfolio
+                </a>
+
+            </div>
+
+
+            <div class="card">
 
                 <h3>📝 To-Do List</h3>
 
                 <p>
-                    A task management application
-                    built with HTML, CSS and JavaScript.
+                    Task management web app with add,
+                    complete, delete and localStorage features.
                 </p>
 
-                <a href="todo.html" class="small-btn">
+                <a class="btn" href="todo.html">
                     Open To-Do
                 </a>
 
             </div>
 
 
-            <div class="project">
+            <div class="card">
 
                 <h3>🧮 Calculator</h3>
 
                 <p>
-                    A functional calculator with
-                    keyboard support and dark mode.
+                    Functional calculator with basic
+                    mathematical operations and keyboard support.
                 </p>
 
-                <a href="calculator.html" class="small-btn">
+                <a class="btn" href="calculator.html">
                     Open Calculator
-                </a>
-
-            </div>
-
-
-            <div class="project">
-
-                <h3>💼 Portfolio</h3>
-
-                <p>
-                    My personal developer portfolio
-                    website.
-                </p>
-
-                <a href="#home" class="small-btn">
-                    View Portfolio
                 </a>
 
             </div>
@@ -480,9 +390,7 @@
 
     <div class="container">
 
-        <h2 class="section-title">
-            📩 Contact Me
-        </h2>
+        <h2>Contact Me</h2>
 
         <div class="contact-box">
 
@@ -507,42 +415,15 @@
 
                 <textarea
                     name="message"
-                    placeholder="Write your message..."
+                    placeholder="Your Message"
                     required
                 ></textarea>
 
-                <button type="submit">
-                    🚀 Send Message
+                <button class="btn" type="submit">
+                    Send Message 🚀
                 </button>
 
             </form>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- SOCIAL / GITHUB -->
-
-<section>
-
-    <div class="container">
-
-        <h2 class="section-title">
-            🌐 Connect With Me
-        </h2>
-
-        <div class="social">
-
-            <a
-                href="https://github.com/vikas07ss"
-                target="_blank"
-                rel="noopener"
-            >
-                🐙 GitHub
-            </a>
 
         </div>
 
@@ -556,88 +437,26 @@
 <footer>
 
     <p>
-        © <span id="year"></span> My Developer Portfolio
+        © <span id="year"></span> Vikas Kumar
     </p>
 
     <p>
-        Built with HTML, CSS & JavaScript ❤️
+        BCA Graduate | Web Development
     </p>
 
 </footer>
 
 
+<!-- JAVASCRIPT -->
+
 <script>
 
-    /* DARK MODE */
-
     function toggleDarkMode() {
+
         document.body.classList.toggle("dark");
+
     }
 
-
-    /* TYPING EFFECT */
-
-    const texts = [
-        "Web Developer 💻",
-        "JavaScript Learner 🚀",
-        "Future Software Developer ⚡"
-    ];
-
-    let textIndex = 0;
-    let charIndex = 0;
-
-    function typeText() {
-
-        if (charIndex < texts[textIndex].length) {
-
-            document.getElementById("typing").innerText +=
-                texts[textIndex].charAt(charIndex);
-
-            charIndex++;
-
-            setTimeout(typeText, 80);
-
-        } else {
-
-            setTimeout(deleteText, 1200);
-        }
-    }
-
-
-    function deleteText() {
-
-        const element =
-            document.getElementById("typing");
-
-        if (charIndex > 0) {
-
-            element.innerText =
-                texts[textIndex].substring(
-                    0,
-                    charIndex - 1
-                );
-
-            charIndex--;
-
-            setTimeout(deleteText, 50);
-
-        } else {
-
-            textIndex++;
-
-            if (textIndex >= texts.length) {
-                textIndex = 0;
-            }
-
-            setTimeout(typeText, 300);
-        }
-    }
-
-
-    typeText();
-
-
-    /* CURRENT YEAR */
 
     document.getElementById("year").innerText =
         new Date().getFullYear();
